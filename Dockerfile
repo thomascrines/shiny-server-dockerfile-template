@@ -29,7 +29,7 @@ RUN R -e "install.packages('stringr', repos='https://cloud.r-project.org/')"
  
 # copy the app to the image
 RUN mkdir /root/<username>
-RUN mkdir /root/<username/myappname
+RUN mkdir /root/<username>/myappname
 COPY myappname /root/<username>/myappname
  
 EXPOSE 3838
