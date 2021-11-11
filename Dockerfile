@@ -16,22 +16,22 @@ RUN apt-get update && apt-get install -y \
     libssh2-1-dev \
     libssl1.1
  
-# system library dependency for the myappname app
+# system library dependency for the <appname> app
 RUN apt-get update && apt-get install -y \
     libmpfr-dev
  
 # basic shiny functionality
 RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cloud.r-project.org/')"
  
-# install dependencies of the myappname app
+# install dependencies of the <appname> app
 RUN R -e "install.packages('dygraphs', repos='https://cloud.r-project.org/')"
 RUN R -e "install.packages('stringr', repos='https://cloud.r-project.org/')"
  
 # copy the app to the image
 RUN mkdir /root/<username>
-RUN mkdir /root/<username>/myappname
-COPY myappname /root/<username>/myappname
+RUN mkdir /root/<username/<appname>
+COPY <appname> /root/<username>/<appname>
  
 EXPOSE 3838
  
-CMD ["R", "-e", "shiny::runApp('/root/<username>/myappname',host='0.0.0.0',port=3838)"]
+CMD ["R", "-e", "shiny::runApp('/root/<username>/<appname>',host='0.0.0.0',port=3838)"]
